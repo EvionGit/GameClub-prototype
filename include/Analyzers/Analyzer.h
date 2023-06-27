@@ -1,7 +1,7 @@
 #ifndef BASE_ANALYZER_HEADER_H
 #define BASE_ANALYZER_HEADER_H
 
-#include "InputParsers/InputParser.h"
+#include "../InputParsers/InputParser.h"
 
 class Analyzer
 {

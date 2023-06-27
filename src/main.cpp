@@ -1,22 +1,30 @@
-#include "Base.h"
-#include "InputParsers/FileParser.h"
-#include "Analyzers/ClubAnalyzer.h"
-#include "Club.h"
-#include "Subscribers/Subscriber.h"
-#include "EventDistributor.h"
+#include "../include/Base.h"
+#include "../include/InputParsers/FileParser.h"
+#include "../include/Analyzers/ClubAnalyzer.h"
+#include "../include/Club.h"
+#include "../include/Subscribers/Subscriber.h"
+#include "../include/EventDistributor.h"
 
 
-#include "Events/InEventBody.h"
-#include "Events/InEventBodyUser.h"
-#include "Events/InEventBodyUserTable.h"
-#include "Events/OutEventBodyError.h"
-#include "Events/OutEventBodyUser.h"
-#include "Events/OutEventBodyUserTable.h"
+#include "../include/Events/InEventBody.h"
+#include "../include/Events/InEventBodyUser.h"
+#include "../include/Events/InEventBodyUserTable.h"
+#include "../include/Events/OutEventBodyError.h"
+#include "../include/Events/OutEventBodyUser.h"
+#include "../include/Events/OutEventBodyUserTable.h"
 
 
 
-int main()
+int main(int argc, char* argv[])
 {
+
+    if(argc != 2)
+    {
+        printer("<program> <input file>");
+        return 1;
+    }
+
+
 	/* event queue */
 	std::queue<Event> event_q;
 
@@ -25,7 +33,7 @@ int main()
 	InEventBody ev100("100"); // open club
 
 
-	FileParser fpars("log2.txt");
+	FileParser fpars(argv[1]);
 	ClubAnalyzer analyzer(fpars,ev100,ev0);
 
 	/* base club configs */

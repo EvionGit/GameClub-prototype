@@ -2,7 +2,7 @@
 #define EVENT_SUBSCRIBER_BASE_HEADER_H
 
 #include <string>
-#include "Events/Event.h"
+#include "../Events/Event.h"
 
 class SubscriberBase
 {

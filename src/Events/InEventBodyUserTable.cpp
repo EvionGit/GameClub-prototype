@@ -1,4 +1,4 @@
-#include "Events/InEventBodyUserTable.h"
+#include "../../include/Events/InEventBodyUserTable.h"
 
 
 InEventBodyUserTable::InEventBodyUserTable(std::string id, uint32_t tables_count)

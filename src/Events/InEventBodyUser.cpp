@@ -1,4 +1,4 @@
-#include "Events/InEventBodyUser.h"
+#include "../../include/Events/InEventBodyUser.h"
 
 InEventBodyUser::InEventBodyUser(std::string id) : InEvent(id) {}
 

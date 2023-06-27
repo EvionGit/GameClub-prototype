@@ -1,4 +1,4 @@
-#include "Events/OutcomingEvent.h"
+#include "../../include/Events/OutcomingEvent.h"
 
 std::map<std::string, OutEvent*> OutEvent::outcoming_events_map;
 

@@ -1,4 +1,4 @@
-#include "EventDistributor.h"
+#include "../include/EventDistributor.h"
 
 
 EventDistributor::EventDistributor(std::queue<Event>& event_q) : event_queue(event_q)

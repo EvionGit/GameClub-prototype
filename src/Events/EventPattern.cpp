@@ -1,4 +1,4 @@
-#include "Events/EventPattern.h"
+#include "../../include/Events/EventPattern.h"
 
 
 std::map<std::string, EventPattern*> EventPattern::events_map;

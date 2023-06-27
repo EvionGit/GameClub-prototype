@@ -1,4 +1,4 @@
-#include "Events/IncomingEvent.h"
+#include "../../include/Events/IncomingEvent.h"
 
 std::map<std::string, InEvent*> InEvent::incoming_events_map;
 

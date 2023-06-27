@@ -1,4 +1,4 @@
-#include "Club.h"
+#include "../include/Club.h"
 
 Club::Club(uint32_t places, uint32_t time_start, uint32_t time_stop, uint32_t price)
 {
@@ -96,7 +96,7 @@ void Club::client_waiting_handler(const Event& ev)
 		call(Event("13", ev.hhmm, std::vector<std::string>{"ClientUnknown"}));
 
 	else if (client_x_table.size() < places)
-		call(Event("13", ev.hhmm, std::vector<std::string>{"ICanWaitNoLonger"}));
+		call(Event("13", ev.hhmm, std::vector<std::string>{"ICanWaitNoLonger!"}));
 
 	else if (client_q.size() >= places)
 		call(Event("11", ev.hhmm, std::vector<std::string>{client_name}));
@@ -124,8 +124,9 @@ void Club::client_left_handler(const Event& ev)
 		{
 			std::string leaving_place = std::to_string(client_x_table[client_name]+1);
 			client_x_table.erase(client_name);
-
-			call(Event("12", ev.hhmm, std::vector<std::string>{client_name, leaving_place}));
+            
+            if(!client_q.empty())
+			    call(Event("12", ev.hhmm, std::vector<std::string>{client_q.front(), leaving_place}));
 		}
 		
 		
@@ -172,7 +173,7 @@ void Club::client_must_sit_down_handler(const Event& ev)
 
 	print_event_msg(ev);
 
-	std::string client_name = client_q.front();
+	std::string client_name = ev.body[0];
 	const std::string& place = ev.body[1];
 	int32_t index_place = atoi(place.c_str())-1;
 

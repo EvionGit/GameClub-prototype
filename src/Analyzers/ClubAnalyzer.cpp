@@ -1,6 +1,6 @@
-#include "Analyzers/ClubAnalyzer.h"
-#include "Events/IncomingEvent.h"
-#include "Base.h"
+#include "../../include/Analyzers/ClubAnalyzer.h"
+#include "../../include/Events/IncomingEvent.h"
+#include "../../include/Base.h"
 #include <regex>
 #include <map>
 
@@ -32,7 +32,7 @@ bool ClubAnalyzer::parse_config()
 	parser.get_line(line);
 	if (!std::regex_match(line.c_str(), result, num_regex))
 	{
-		printf("%s\n", line.c_str());
+		printer(line);
 		return false;
 	}
 	this->tables_amount = std::strtoul(result[1].str().c_str(), 0, 0);
@@ -41,7 +41,7 @@ bool ClubAnalyzer::parse_config()
 	parser.get_line(line);
 	if (!std::regex_match(line.c_str(), result, time_regex))
 	{
-		printf("%s\n", line.c_str());
+		printer(line);
 		return false;
 	}
 	this->start_time = to_minutes(result[1].str());
@@ -51,7 +51,7 @@ bool ClubAnalyzer::parse_config()
 	parser.get_line(line);
 	if (!std::regex_match(line.c_str(), result, num_regex))
 	{
-		printf("%s\n", line.c_str());
+		printer(line);
 		return false;
 	}
 	this->price = std::strtoul(result[1].str().c_str(), 0, 0);
@@ -90,7 +90,7 @@ bool ClubAnalyzer::analyze()
 	{
 		if (!std::regex_match(line.c_str(), result, event_regex))
 		{
-			printf("%s\n", line.c_str());
+		    printer(line);
 			return false;
 		}
 
@@ -103,7 +103,7 @@ bool ClubAnalyzer::analyze()
 		auto it = event_map.begin();
 		if ((it = event_map.find(e_id)) == event_map.end())
 		{
-			printf("%s", line.c_str());
+		    printer(line);
 			return false;
 		}
 
@@ -111,7 +111,7 @@ bool ClubAnalyzer::analyze()
 		std::vector<std::string> event_params;
 		if (!it->second->get_params(e_body, event_params))
 		{
-			printf("%s\n", line.c_str());
+	    	printer(line);
 			return false;
 		}
 
@@ -122,7 +122,7 @@ bool ClubAnalyzer::analyze()
 		uint32_t e_time_minuntes = to_minutes(e.hhmm);
 		if (last_timestamp > e_time_minuntes)
 		{
-			printf("%s\n", line.c_str());
+		    printer(line);
 			return false;
 		}
 
@@ -134,6 +134,7 @@ bool ClubAnalyzer::analyze()
 
 	/* CLOSE event */
 	event_q.push(Event(close_ev.get_id(), to_hhmm(end_time), std::move(std::vector<std::string>())));
+    return true;
 }
 
 void ClubAnalyzer::get_config(uint32_t& tab_count, uint32_t& start_t, uint32_t& end_t, uint32_t& price)

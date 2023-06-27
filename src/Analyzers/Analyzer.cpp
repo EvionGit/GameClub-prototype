@@ -1,3 +1,3 @@
-#include "Analyzers/Analyzer.h"
+#include "../../include/Analyzers/Analyzer.h"
 
 Analyzer::Analyzer(InputParser& parser) :parser(parser){}

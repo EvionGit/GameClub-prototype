@@ -1,4 +1,4 @@
-#include "Table.h"
+#include "../include/Table.h"
 #include <cmath>
 
 Table::Table(uint32_t price) : profit(0),total_time(0),placement_time(0),is_taken(false)

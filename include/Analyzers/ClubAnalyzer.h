@@ -2,8 +2,8 @@
 #define CLUB_ANALYZER_HEADER_H
 
 #include "Analyzer.h"
-#include "Events/Event.h"
-#include "Events/IncomingEvent.h"
+#include "../Events/Event.h"
+#include "../Events/IncomingEvent.h"
 #include <queue>
 
 class ClubAnalyzer : public Analyzer

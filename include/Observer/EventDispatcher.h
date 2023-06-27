@@ -5,9 +5,9 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "Subscribers/Subscriber.h"
-#include "Events/EventPattern.h"
-#include "Events/Event.h"
+#include "../Subscribers/Subscriber.h"
+#include "../Events/EventPattern.h"
+#include "../Events/Event.h"
 #include <memory>
 
 class EventDispatcher

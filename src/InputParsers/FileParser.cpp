@@ -1,4 +1,4 @@
-#include "InputParsers/FileParser.h"
+#include "../../include/InputParsers/FileParser.h"
 
 FileParser::FileParser(std::string file_name)
 {
