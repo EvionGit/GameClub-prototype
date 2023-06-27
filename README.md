@@ -1,5 +1,5 @@
 # GameClub-prototype
-The prototype of the game club.
+The prototype of a game club.
 ___
 
 ## Build
