@@ -29,5 +29,5 @@ ___
 ```
 ./GameClub <path to input file>
 
-./tests/GameClubTests.exe ./GameClub.exe ../tests/inputs ../tests/outputs
+./tests/GameClubTests ./GameClub ../tests/inputs ../tests/outputs
 ``` 
